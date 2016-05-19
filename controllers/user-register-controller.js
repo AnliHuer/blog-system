@@ -2,35 +2,45 @@ var models = require('../models');
 var CONSTANT = require('../public/javascripts/all-constant.js');
 var User = models.User;
 
-function UserRegisterController() {}
+function UserRegisterController() {
+}
 
-UserRegisterController.prototype.displayPage = function(req, res){
-    console.log('controller');
+UserRegisterController.prototype.displayPage = function (req, res) {
     res.render('user-register');
 }
 
-UserRegisterController.prototype.add = function(req, res) {
+UserRegisterController.prototype.add = function (req, res) {
     var user = req.body;
-    User.create({
+
+    User.findAll({
         where: {
             userEmail: user.userEmail,
-            userPassword: user.userPassword
         }
-    }).then(function(data) {
-        if (data !== null) {
+    }).then(function (data) {
+        if (data.length !== 0) {
             res.send({
-                status: CONSTANT.OK,
-                message: 'success',
-                data: data.dataValues
+                message: 'fail'
             });
         } else {
-            res.send({
-                status: CONSTANT.NOT_FOUND,
-                message: 'fail'
+            User.create({
+                userEmail: user.userEmail,
+                userPassword: user.userPassword
+            }).then(function (data) {
+                if (data.length !== 0) {
+                    res.send({
+                        status: CONSTANT.OK,
+                        message: 'success',
+                        data: data.dataValues
+                    });
+                } else {
+                    res.send({
+                        message: 'fail'
+                    });
+                }
             });
         }
     });
-};
+}
 
 
 module.exports = UserRegisterController;
