@@ -1,4 +1,4 @@
 exports.setRoutes = function(app) {
-  app.use('/', require('./routers/index.js'));
-  app.use('/users', require('./routers/users.js'));
+  app.use('/user-login', require('./routers/user-login.js'));
+  app.use('/user-register', require('./routers/user-register.js'));
 }
