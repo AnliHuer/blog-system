@@ -14,15 +14,19 @@ function userRegister() {
             }, 3000);
         } else {
             $('.label-user-email').text('该邮箱已注册！');
+            $('#inputPassword').val('');
+            $('#inputUserEmail').val('');
         }
     });
 }
 
 
 $(function () {
-    $('#register').on('click', function () {
+    $("form").submit(function (event) {
+        event.preventDefault();
+
         userRegister();
-    })
+    });
 
     $('.form-login').on('click', function () {
         location.href = 'user-login';
