@@ -28,6 +28,10 @@ UserLoginController.prototype.onValidate = function (req, res) {
                 expires: new Date(Date.now() + 900000),
                 path:'/'
             });
+            res.cookie('userPassword', data[0].dataValues.userPassword,{
+                expires: new Date(Date.now() + 900000),
+                path:'/'
+            });
 
             res.send({
                 status: CONSTANT.OK,
