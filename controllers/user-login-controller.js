@@ -18,8 +18,17 @@ UserLoginController.prototype.onValidate = function (req, res) {
             userPassword: user.userPassword
         }
     }).then(function (data) {
-        console.log(data);
         if (data.length !== 0) {
+
+            res.cookie('userId', data[0].dataValues.id,{
+                expires: new Date(Date.now() + 900000),
+                path:'/'
+            });
+            res.cookie('userEmail', data[0].dataValues.userEmail,{
+                expires: new Date(Date.now() + 900000),
+                path:'/'
+            });
+
             res.send({
                 status: CONSTANT.OK,
                 message: 'success',
