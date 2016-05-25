@@ -20,6 +20,7 @@ UserLoginController.prototype.onValidate = function (req, res) {
     }).then(function (data) {
         if (data.length !== 0) {
 
+            console.log(data);
             res.cookie('userId', data[0].dataValues.id,{
                 expires: new Date(Date.now() + 900000),
                 path:'/'
@@ -29,6 +30,22 @@ UserLoginController.prototype.onValidate = function (req, res) {
                 path:'/'
             });
             res.cookie('userPassword', data[0].dataValues.userPassword,{
+                expires: new Date(Date.now() + 900000),
+                path:'/'
+            });
+            res.cookie('userName', data[0].dataValues.userName,{
+                expires: new Date(Date.now() + 900000),
+                path:'/'
+            });
+            res.cookie('userPhone', data[0].dataValues.userPhone,{
+                expires: new Date(Date.now() + 900000),
+                path:'/'
+            });
+            res.cookie('userCareer', data[0].dataValues.userCareer,{
+                expires: new Date(Date.now() + 900000),
+                path:'/'
+            });
+            res.cookie('userLog', data[0].dataValues.userLog,{
                 expires: new Date(Date.now() + 900000),
                 path:'/'
             });

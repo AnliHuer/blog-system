@@ -7,9 +7,9 @@ function userLogin() {
         userPassword: userPassword
     }, function (resp) {
         if (resp.message === 'success') {
-            location.href = 'user-about';
+            location.href = 'user-index';
         } else {
-            $('.label-user-email').text('邮箱或密码错误!');
+            $('.prompt-message').text('邮箱或密码错误!');
             $('#inputPassword').val('');
             $('#inputUserEmail').val('');
         }

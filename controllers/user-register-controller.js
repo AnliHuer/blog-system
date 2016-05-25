@@ -17,14 +17,21 @@ UserRegisterController.prototype.add = function (req, res) {
             userEmail: user.userEmail,
         }
     }).then(function (data) {
+        console.log(data);
+
         if (data.length !== 0) {
             res.send({
                 message: 'fail'
             });
         } else {
             User.create({
+                userName: user.userName,
+                userRole: user.userRole,
                 userEmail: user.userEmail,
-                userPassword: user.userPassword
+                userPassword: user.userPassword,
+                userPhone: user.userPhone,
+                userCareer: user.userCareer,
+                userLog: user.userLog
             }).then(function (data) {
                 if (data.length !== 0) {
                     res.send({
