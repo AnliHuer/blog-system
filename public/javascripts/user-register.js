@@ -18,9 +18,9 @@ function userRegister() {
         if (resp.message === 'success') {
             $('.prompt-message').text('注册成功！ 3秒后将自动跳转至登录页面...');
 
-            // setTimeout(function () {
-            //     location.href = 'user-login';
-            // }, 3000);
+            setTimeout(function () {
+                location.href = 'user-login';
+            }, 3000);
         } else {
             $('.prompt-message').append('该邮箱已注册！');
             $('#inputUserName').val('');

@@ -20,7 +20,6 @@ UserLoginController.prototype.onValidate = function (req, res) {
     }).then(function (data) {
         if (data.length !== 0) {
 
-            console.log(data);
             res.cookie('userId', data[0].dataValues.id,{
                 expires: new Date(Date.now() + 900000),
                 path:'/'
