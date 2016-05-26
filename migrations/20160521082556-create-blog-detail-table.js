@@ -14,6 +14,9 @@ module.exports = {
             blogImage: Sequelize.BLOB,
             createdAt: {
                 type: Sequelize.DATE
+            },
+            updatedAt: {
+                type: Sequelize.DATE
             }
         });
     },

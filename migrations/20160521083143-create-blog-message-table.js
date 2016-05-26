@@ -13,6 +13,9 @@ module.exports = {
       message: Sequelize.TEXT,
       createdAt: {
         type: Sequelize.DATE
+      },
+      updatedAt: {
+        type: Sequelize.DATE
       }
     });
   },
