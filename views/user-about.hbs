@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>黑色Html5响应式个人博客模板――主题《如影随形》</title>
+    <link href="./stylesheets/user-base.css" rel="stylesheet">
+    <link href="./stylesheets/user-about.css" rel="stylesheet">
+    <link href="./stylesheets/user-media.css" rel="stylesheet">
+    <link href="./stylesheets/user-index.css" rel="stylesheet">
+    <link href="./bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <script src="./jquery/dist/jquery.js"></script>
+    <script src="./javascripts/user-about.js"></script>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+</head>
+<body>
+<div class="ibody">
+    <header>
+        <h1>悦 享</h1>
+        <h2>记录生活 发现同好</h2>
+        <div class="logo"><a href="/"></a></div>
+        <nav id="topnav"><a href="index.html">首页</a><a href="newlist.html">我的文章</a><a href="about.html">关于我</a></nav>
+    </header>
+
+    <article>
+        <h3 class="about_h">您现在的位置是：<a href="/">首页</a>><a href="1/">关于我</a></h3>
+        <div class="about">
+
+            <form class="form-about">
+                <h2>个人信息</h2>
+                <h5 class="prompt-message"></h5>
+                <fieldset>
+                    <p>
+                        <label for="inputUserName" >用户名</label>
+                        <input id="inputUserName" name="inputUserName" type="text" class='form-control' autofocus
+                               value={{cookie.userName}} required >
+                    </p>
+                    <p>
+                        <label for="inputUserEmail">邮 箱</label>
+                        <input id="inputUserEmail" name="inputUserEmail" type="email" class='form-control'
+                               value={{cookie.userEmail}} disabled>
+                    </p>
+                    <p>
+                        <label for="inputPassword">密 码</label>
+                        <input id="inputPassword" name="inputPassword" type="password" class='form-control'
+                               value={{cookie.userPassword}} minlength="6" maxlength="12" disabled>
+                    </p>
+                    <p>
+                        <label for="inputUserPhone">电 话</label>
+                        <input id="inputUserPhone" name="inputUserPhone" type="text" class='form-control'
+                               value={{cookie.userPhone}} required>
+                    </p>
+                    <p>
+                        <label for="inputUserCareer">职 业</label>
+                        <input id="inputUserCareer" name="inputUserCareer" type="text" class='form-control'
+                               value={{cookie.userCareer}} required>
+                    </p>
+                    <p>
+                        <label for="inputUserLog">语 录</label>
+                        <input id="inputUserLog" name="inputUserLog" type="text" class='form-control'
+                               value={{cookie.userLog}} required>
+                    </p>
+                    <p>
+                        <button class="btn btn-block btn-lg" type="submit" id='save'>保 存</button>
+                    </p>
+                </fieldset>
+            </form>
+        </div>
+    </article>
+    <aside>
+        <div class="avatar"><a href="user-about"><span>修改头像</span></a></div>
+        <div class="topspaceinfo">
+            <!--<h1>执子之手，与子偕老</h1>-->
+            <!--<p>于千万人之中，我遇见了我所遇见的人....</p>-->
+        </div>
+        <div class="about_c">
+        </div>
+    </aside>
+    <div class="clear"></div>
+    <!-- 清除浮动 -->
+</div>
+</body>
+</html>
