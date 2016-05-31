@@ -18,7 +18,7 @@
         <h1>悦 享</h1>
         <h2>记录生活 发现同好</h2>
         <div class="logo"><a href="/"></a></div>
-        <nav id="topnav"><a href="index.html">首页</a><a href="newlist.html">我的文章</a><a href="about.html">关于我</a></nav>
+        <nav id="topnav"><a href="user-index">首页</a><a href="user-blog">我的文章</a><a href="user-about">关于我</a></nav>
     </header>
 
     <article>
@@ -67,12 +67,16 @@
         </div>
     </article>
     <aside>
-        <div class="avatar"><a href="user-about"><span>修改头像</span></a></div>
+        <div class="avatar"><a href="about.html"><span>修改头像</span></a></div>
         <div class="topspaceinfo">
-            <!--<h1>执子之手，与子偕老</h1>-->
-            <!--<p>于千万人之中，我遇见了我所遇见的人....</p>-->
+                <h1>{{cookie.userName}}</h1>
+            <p>{{cookie.userLog}}</p>
         </div>
         <div class="about_c">
+            <p>用户名：{{cookie.userName}}</p>
+            <p>ְ职&nbsp&nbsp&nbsp&nbsp业：{{cookie.userCareer}}</p>
+            <p>电&nbsp&nbsp&nbsp&nbsp话：{{cookie.userPhone}}</p>
+            <p>邮&nbsp&nbsp&nbsp&nbsp箱：{{cookie.userEmail}}</p>
         </div>
     </aside>
     <div class="clear"></div>
