@@ -38,7 +38,6 @@ UserIndexController.prototype.displayPage = function (req, res) {
         }
     }).then(function (user) {
         if (user !== null) {
-
             BlogDetail.findAll({
                 where: {
                     userId: user.dataValues.id
@@ -48,13 +47,25 @@ UserIndexController.prototype.displayPage = function (req, res) {
 
                 blogDetails.forEach(function (blogDetail) {
                     blogDetail = formatBlogDetail(blogDetail);
-                    
+
                     BlogTag.findOne({
                         where: {
                             id: blogDetail.blogTagId
                         }
                     }).then(function (blogTag) {
-                        blogList.push({blogDetail: blogDetail, blogTag: blogTag, user: user});
+
+                        Blogmessage.findAll({
+                            where: {
+                                blogDetailId: blogDetail.id
+                            }
+                        }).then(function (blogMessage) {
+                            blogList.push({
+                                blogDetail: blogDetail,
+                                blogTag: blogTag,
+                                blogMessage: blogMessage,
+                                user: user
+                            });
+                        });
                     });
                 })
 

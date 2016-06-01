@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>用户主页</title>
+    <link href="./stylesheets/user-base.css" rel="stylesheet">
+    <link href="./stylesheets/user-index.css" rel="stylesheet">
+    <link href="./stylesheets/user-media.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+</head>
+<body>
+<div class="ibody">
+    <header>
+        <h1>悦 享</h1>
+        <h2>记录生活 发现同好</h2>
+        <div class="logo"></div>
+        <nav id="topnav"><a href="user-index">首页</a><a href="user-blog">我的文章</a><a href="user-about">关于我</a><a
+                href="user-word">留言板</a></nav>
+    </header>
+
+    <article>
+        <div class="bloglist">
+            <h2>
+                <p>
+                    <span>最新</span>文章
+                </p>
+            </h2>
+            {{#each blogList}}
+                <div class="blogs" data-id={{blogDetail.id}}>
+                    <h3><a href="/">{{blogDetail.blogName}}</a></h3>
+                    <figure><img src="./images/login-background.jpg"></figure>
+                    <ul>
+                        <p>
+                            {{blogDetail.content}}
+                        </p>
+                        <a href="/" target="_blank" class="readmore">阅读全文>></a>
+                    </ul>
+                    <p class="autor">
+                        <span>作者：{{user.userName}}</span>
+                        <span>分类：{{blogTag.tag}}</span>
+                        <span>评论：30</span>
+                    </p>
+                    <div class="dateview">{{blogDetail.createdAt}}</div>
+                </div>
+            {{/each}}
+        </div>
+    </article>
+
+    <aside>
+        <div class="avatar"><a href="user-about"><span>{{user.userName}}</span></a></div>
+        <div class="topspaceinfo">
+            <h1>{{user.userName}}</h1>
+            <p>{{user.userLog}}</p>
+        </div>
+        <div class="about_c">
+            <p>用户名：{{user.userName}}</p>
+            <p>ְ职&nbsp&nbsp&nbsp&nbsp业：{{user.userCareer}}</p>
+            <p>电&nbsp&nbsp&nbsp&nbsp话：{{user.userPhone}}</p>
+            <p>邮&nbsp&nbsp&nbsp&nbsp箱：{{user.userEmail}}</p>
+        </div>
+        <div class="tj_news">
+            <h2>
+                <p class="tj_t1">最新文章</p>
+            </h2>
+            <ul>
+                {{#each blogList}}
+                    <li><a href="/">{{blogDetail.blogName}}</a></li>
+                {{/each}}
+            </ul>
+            <h2>
+                <p class="tj_t2">推荐文章</p>
+            </h2>
+            <ul>
+                {{#each blogList}}
+                    <li><a href="/">{{blogDetail.blogName}}</a></li>
+                {{/each}}
+            </ul>
+        </div>
+        <div class="copyright">
+            <ul>
+                <p> Design by <a href="/">Anlihuer</a></p>
+                <p>2016</p>
+                </p>
+            </ul>
+        </div>
+    </aside>
+
+    <div class="clear"></div>
+</div>
+</body>
+</html>
