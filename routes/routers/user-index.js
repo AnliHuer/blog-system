@@ -1,8 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/', function(req, res, next) {
-    res.render('user-index');
-});
+var UserIndexController = require('../../controllers/user-index-controller');
+var UserIndexController = new UserIndexController();
+
+router.get('/',UserIndexController.displayPage);
 
 module.exports = router;
