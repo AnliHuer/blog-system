@@ -12,27 +12,28 @@
     <script src="./javascripts/user-about.js"></script>
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
 </head>
+
 <body>
 <div class="ibody">
     <header>
         <h1>悦 享</h1>
         <h2>记录生活 发现同好</h2>
         <div class="logo"><a href="/"></a></div>
-        <nav id="topnav"><a href="user-index">首页</a><a href="user-blog">我的文章</a><a href="user-about">关于我</a></nav>
+        <nav id="topnav"><a href="user-index">首页</a><a href="user-blog">我的文章</a><a href="user-about">关于我</a><a
+                href="user-word">留言板</a></nav>
     </header>
 
     <article>
         <h3 class="about_h">您现在的位置是：<a href="/">首页</a>><a href="1/">关于我</a></h3>
         <div class="about">
-
             <form class="form-about">
                 <h2>个人信息</h2>
                 <h5 class="prompt-message"></h5>
                 <fieldset>
                     <p>
-                        <label for="inputUserName" >用户名</label>
+                        <label for="inputUserName">用户名</label>
                         <input id="inputUserName" name="inputUserName" type="text" class='form-control' autofocus
-                               value={{cookie.userName}} required >
+                               value={{cookie.userName}} required>
                     </p>
                     <p>
                         <label for="inputUserEmail">邮 箱</label>
@@ -66,10 +67,11 @@
             </form>
         </div>
     </article>
+
     <aside>
         <div class="avatar"><a href="about.html"><span>修改头像</span></a></div>
         <div class="topspaceinfo">
-                <h1>{{cookie.userName}}</h1>
+            <h1>{{cookie.userName}}</h1>
             <p>{{cookie.userLog}}</p>
         </div>
         <div class="about_c">
@@ -78,9 +80,16 @@
             <p>电&nbsp&nbsp&nbsp&nbsp话：{{cookie.userPhone}}</p>
             <p>邮&nbsp&nbsp&nbsp&nbsp箱：{{cookie.userEmail}}</p>
         </div>
+        <div class="copyright">
+            <ul>
+                <p> Design by <a href="/">Anlihuer</a></p>
+                <p>2016</p>
+                </p>
+            </ul>
+        </div>
     </aside>
+
     <div class="clear"></div>
-    <!-- 清除浮动 -->
 </div>
 </body>
 </html>
