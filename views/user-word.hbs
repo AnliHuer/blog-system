@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>用户主页</title>
+    <link href="./stylesheets/user-base.css" rel="stylesheet">
+    <link href="./stylesheets/user-index.css" rel="stylesheet">
+    <link href="./stylesheets/user-word.css" rel="stylesheet">
+    <link href="./bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="./stylesheets/user-media.css" rel="stylesheet">
+    <script src="./jquery/dist/jquery.js"></script>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+</head>
+<body>
+<div class="ibody">
+    <header>
+        <h1>悦 享</h1>
+        <h2>记录生活 发现同好</h2>
+        <div class="logo"></div>
+        <nav id="topnav"><a href="user-index">首页</a><a href="user-blog">我的文章</a><a href="user-about">关于我</a><a
+                href="user-word">留言板</a></nav>
+    </header>
+
+    <article>
+        <div id="blog-shadow"></div>
+        <div id="input-area">
+            <textarea id="input-word" class="form-control" rows="4" cols="5" placeholder="请输入..."></textarea>
+            <button class="btn btn-primary btn-default" type="submit" id='word-button'>留 言</button>
+            <div class="parting-line"></div>
+            <div id="words">
+                {{#each userWords}}
+                    <div id="word-info">
+                        <span class="user-name">{{user.userName}}</span><span class="created-at">{{userWord.createdAt}}</span>
+                    </div>
+                    <div id="word-content">
+                        {{userWord.userWord}}
+                    </div>
+                    <div class="word-line"></div>
+                {{/each}}
+            </div>
+        </div>
+    </article>
+
+    <aside>
+        <div class="avatar"><a href="user-about"><span>{{person.userName}}</span></a></div>
+        <div class="topspaceinfo">
+            <h1>{{person.userName}}</h1>
+            <p>{{person.userLog}}</p>
+        </div>
+        <div class="about_c">
+            <p>用户名：{{person.userName}}</p>
+            <p>ְ职&nbsp&nbsp&nbsp&nbsp业：{{person.userCareer}}</p>
+            <p>电&nbsp&nbsp&nbsp&nbsp话：{{person.userPhone}}</p>
+            <p>邮&nbsp&nbsp&nbsp&nbsp箱：{{person.userEmail}}</p>
+        </div>
+        <div class="copyright">
+            <ul>
+                <p> Design by <a href="/">Anlihuer</a></p>
+                <p>2016</p>
+                </p>
+            </ul>
+        </div>
+    </aside>
+
+    <div class="clear"></div>
+</div>
+</body>
+</html>
