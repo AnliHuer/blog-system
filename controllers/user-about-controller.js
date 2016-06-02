@@ -24,19 +24,19 @@ UserAboutController.prototype.updateUserInfo = function (req, res) {
     }).then(function (data) {
         if (data[0] !== 0) {
             res.cookie('userName', user.userName,{
-                expires: new Date(Date.now() + 900000),
+                expires: new Date(Date.now() + 3600000),
                 path:'/'
             });
             res.cookie('userPhone', user.userPhone,{
-                expires: new Date(Date.now() + 900000),
+                expires: new Date(Date.now() + 3600000),
                 path:'/'
             });
             res.cookie('userCareer', user.userCareer,{
-                expires: new Date(Date.now() + 900000),
+                expires: new Date(Date.now() + 3600000),
                 path:'/'
             });
             res.cookie('userLog', user.userLog,{
-                expires: new Date(Date.now() + 900000),
+                expires: new Date(Date.now() + 3600000),
                 path:'/'
             });
 
