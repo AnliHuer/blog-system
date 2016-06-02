@@ -6,6 +6,8 @@
     <link href="./stylesheets/user-base.css" rel="stylesheet">
     <link href="./stylesheets/user-index.css" rel="stylesheet">
     <link href="./stylesheets/user-media.css" rel="stylesheet">
+    <script src="./jquery/dist/jquery.js"></script>
+    <script src="./javascripts/user-index.js"></script>
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
 </head>
 <body>
@@ -33,18 +35,18 @@
             </h2>
             {{#each blogList}}
                 <div class="blogs">
-                    <h3><a href="/">{{blogDetail.blogName}}</a></h3>
+                    <h3><a href="user-blog-detail?id={{blogDetail.id}}" >{{blogDetail.blogName}}</a></h3>
                     <figure><img src="./images/login-background.jpg"></figure>
                     <ul>
                         <p>
                             {{blogDetail.content}}
                         </p>
-                        <a href="/" target="_blank" class="readmore">阅读全文>></a>
+                        <a href="user-blog-detail?id={{blogDetail.id}}" target="_blank" class="readmore">阅读全文>></a>
                     </ul>
                     <p class="autor">
                         <span>作者：{{user.userName}}</span>
                         <span>分类：{{blogTag.tag}}</span>
-                        <span>评论：30</span>
+                        <span>评论：{{blogMessage.length}}</span>
                     </p>
                     <div class="dateview">{{blogDetail.createdAt}}</div>
                 </div>
@@ -70,7 +72,7 @@
             </h2>
             <ul>
                 {{#each blogList}}
-                    <li><a href="/">{{blogDetail.blogName}}</a></li>
+                    <li><a href="user-blog-detail?id={{blogDetail.id}}">{{blogDetail.blogName}}</a></li>
                 {{/each}}
             </ul>
             <h2>
@@ -78,7 +80,7 @@
             </h2>
             <ul>
                 {{#each blogList}}
-                    <li><a href="/">{{blogDetail.blogName}}</a></li>
+                    <li><a href="user-blog-detail?id={{blogDetail.id}}">{{blogDetail.blogName}}</a></li>
                 {{/each}}
             </ul>
         </div>

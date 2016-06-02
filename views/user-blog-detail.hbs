@@ -2,10 +2,12 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>用户主页</title>
+    <title>悦享</title>
     <link href="./stylesheets/user-base.css" rel="stylesheet">
     <link href="./stylesheets/user-index.css" rel="stylesheet">
+    <link href="./stylesheets/user-blog-detail.css" rel="stylesheet">
     <link href="./stylesheets/user-media.css" rel="stylesheet">
+    <script src="./javascripts/user-blog-detail.js"></script>
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
 </head>
 <body>
@@ -19,31 +21,23 @@
     </header>
 
     <article>
-        <div class="bloglist">
-            <h2>
-                <p>
-                    <span>最新</span>文章
-                </p>
-            </h2>
-            {{#each blogList}}
-                <div class="blogs" data-id={{blogDetail.id}}>
-                    <h3><a href="/">{{blogDetail.blogName}}</a></h3>
-                    <figure><img src="./images/login-background.jpg"></figure>
-                    <ul>
-                        <p>
-                            {{blogDetail.content}}
-                        </p>
-                        <a href="/" target="_blank" class="readmore">阅读全文>></a>
-                    </ul>
-                    <p class="autor">
-                        <span>作者：{{user.userName}}</span>
-                        <span>分类：{{blogTag.tag}}</span>
-                        <span>评论：30</span>
-                    </p>
-                    <div class="dateview">{{blogDetail.createdAt}}</div>
-                </div>
-            {{/each}}
-        </div>
+        <div id="blog-shadow"></div>
+        <div id="blog">
+            <div id="blog-title">{{blogDetail.blogName}}</div>
+            <div id="blog-info"><span>作者：{{user.userName}}
+                </span>|<span>日期：{{blogDetail.createdAt}}</span>|<span>分类：{{blogTag.tag}}</span></div>
+            <div id="blog-line"></div>
+            <div id="blog-content">{{blogDetail.content}}</div>
+            <div id="blog-line"></div>
+            <div id="blog-word">
+                <div class="word-area">评论：({{blogMessages.length}}个评论)</div>
+                <div class="word-line"></div>
+                <ul>
+                    {{#each blogMessages}}
+                        <li>{{blogMessages.message}}</li>
+                    {{/each}}
+                </ul>
+            </div>
     </article>
 
     <aside>
@@ -57,24 +51,6 @@
             <p>ְ职&nbsp&nbsp&nbsp&nbsp业：{{user.userCareer}}</p>
             <p>电&nbsp&nbsp&nbsp&nbsp话：{{user.userPhone}}</p>
             <p>邮&nbsp&nbsp&nbsp&nbsp箱：{{user.userEmail}}</p>
-        </div>
-        <div class="tj_news">
-            <h2>
-                <p class="tj_t1">最新文章</p>
-            </h2>
-            <ul>
-                {{#each blogList}}
-                    <li><a href="/">{{blogDetail.blogName}}</a></li>
-                {{/each}}
-            </ul>
-            <h2>
-                <p class="tj_t2">推荐文章</p>
-            </h2>
-            <ul>
-                {{#each blogList}}
-                    <li><a href="/">{{blogDetail.blogName}}</a></li>
-                {{/each}}
-            </ul>
         </div>
         <div class="copyright">
             <ul>
