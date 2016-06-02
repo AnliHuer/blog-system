@@ -1,31 +1,12 @@
 var models = require('../models');
-var CONSTANT = require('../public/javascripts/all-constant.js');
+var formatBlogDetail = require('./formatBlogDetail');
 var User = models.User;
 var Blogmessage = models.BlogMessage;
 var BlogDetail = models.BlogDetail;
 var BlogTag = models.BlogTag;
 
+
 function UserIndexController() {
-}
-
-function formatDate(data) {
-    var date = data.getDate() < 10 ? "0" + data.getDate() : data.getDate().toString();
-    var month = data.getMonth() < 10 ? "0" + (data.getMonth() + 1 ) : (data.getMonth() + 1).toString();
-    var year = data.getFullYear().toString();
-
-    return (date + '/' + month + '/' + year);
-}
-
-function formatBlogDetail(blogDetail) {
-    return {
-        id: blogDetail.id,
-        blogTagId: blogDetail.blogTagId,
-        userId: blogDetail.userId,
-        content: blogDetail.content,
-        createdAt: formatDate(blogDetail.createdAt),
-        updatedAt: formatDate(blogDetail.updatedAt),
-        blogName: blogDetail.blogName
-    }
 }
 
 UserIndexController.prototype.displayPage = function (req, res) {
@@ -43,7 +24,6 @@ UserIndexController.prototype.displayPage = function (req, res) {
                     userId: user.dataValues.id
                 }
             }).then(function (blogDetails) {
-                var blog = {};
 
                 blogDetails.forEach(function (blogDetail) {
                     blogDetail = formatBlogDetail(blogDetail);
