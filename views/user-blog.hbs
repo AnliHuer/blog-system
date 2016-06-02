@@ -1,10 +1,71 @@
 <!doctype html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>我的文章</title>
+    <link href="./stylesheets/user-base.css" rel="stylesheet">
+    <link href="./stylesheets/user-index.css" rel="stylesheet">
+    <link href="./stylesheets/user-media.css" rel="stylesheet">
+    <link href="./bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="./stylesheets/user-blog.css" rel="stylesheet">
+    <script src="./jquery/dist/jquery.js"></script>
+    <script src="./javascripts/user-blog.js"></script>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
 </head>
 <body>
-Hello world!
+<div class="ibody">
+    <header>
+        <h1>悦 享</h1>
+        <h2>记录生活 发现同好</h2>
+        <div class="logo"></div>
+        <nav id="topnav"><a href="user-index">首页</a><a href="user-blog">我的文章</a><a href="user-about">关于我</a><a
+                href="user-word">留言板</a></nav>
+    </header>
+
+    <article>
+        <div id="blog-shadow"></div>
+        <div id="blog-tag">
+            <a class="all-blog" id='0'>全部文章</a>
+            {{#each blogTags}}
+                |<a class="blog-tag" id={{id}}>{{tag}}</a>
+            {{/each}}
+            <button class="btn btn-primary btn-xs">添加分类</button>
+        </div>
+        <div class="tag-line"></div>
+        <div id="blogs">
+            <ul>
+                {{#each blogList}}
+                    <a href="user-blog-detail?id={{blogDetail.id}}" class="blog-name">{{blogDetail.blogName}}</a>
+                    <li class="blog-createdAt">{{blogDetail.createdAt}}</li>
+                    <div class="blog-line"></div>
+                {{/each}}
+            </ul>
+
+        </div>
+    </article>
+
+    <aside>
+        <div class="avatar"><a href="user-about"><span>{{user.userName}}</span></a></div>
+        <div class="topspaceinfo">
+            <h1>{{user.userName}}</h1>
+            <p>{{user.userLog}}</p>
+        </div>
+        <div class="about_c">
+            <p>用户名：{{user.userName}}</p>
+            <p>ְ职&nbsp&nbsp&nbsp&nbsp业：{{user.userCareer}}</p>
+            <p>电&nbsp&nbsp&nbsp&nbsp话：{{user.userPhone}}</p>
+            <p>邮&nbsp&nbsp&nbsp&nbsp箱：{{user.userEmail}}</p>
+        </div>
+        <div class="copyright">
+            <ul>
+                <p> Design by <a href="/">Anlihuer</a></p>
+                <p>2016</p>
+                </p>
+            </ul>
+        </div>
+    </aside>
+
+    <div class="clear"></div>
+</div>
 </body>
 </html>
