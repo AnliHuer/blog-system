@@ -5,13 +5,15 @@
     <title>我的文章</title>
     <link href="./stylesheets/user-base.css" rel="stylesheet">
     <link href="./stylesheets/user-index.css" rel="stylesheet">
+    <link href="./stylesheets/user-blog.css" rel="stylesheet">
     <link href="./stylesheets/user-media.css" rel="stylesheet">
     <link href="./bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-    <link href="./stylesheets/user-blog.css" rel="stylesheet">
+    <link href="./stylesheets/user-media.css" rel="stylesheet">
     <script src="./jquery/dist/jquery.js"></script>
     <script src="./javascripts/user-blog.js"></script>
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
 </head>
+
 <body>
 <div class="ibody">
     <header>
@@ -29,6 +31,9 @@
             {{#each blogTags}}
                 |<a class="blog-tag" id={{id}}>{{tag}}</a>
             {{/each}}
+        </div>
+        <div id="create-blog">
+            <button class="btn btn-default" type="button">创建博文</button>
         </div>
         <div class="tag-line"></div>
         <div id="blogs">
