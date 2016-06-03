@@ -7,4 +7,6 @@ exports.setRoutes = function(app) {
   app.use('/user-blog-detail', require('./routers/user-blog-detail.js'))
   app.use('/user-tag', require('./routers/user-tag.js'))
   app.use('/user-word', require('./routers/user-word.js'))
+  app.use('/user-new-blog', require('./routers/user-new-blog.js'))
+
 }
