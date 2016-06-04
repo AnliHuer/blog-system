@@ -1,35 +1,12 @@
 var models = require('../models');
 var formatBlogDetail = require('./formatBlogDetail');
+var buildBlogTags = require('./buildBlogTags');
 var Blogmessage = models.BlogMessage;
 var BlogDetail = models.BlogDetail;
 var BlogTag = models.BlogTag;
 var User = models.User;
 
 function UserBlogController() {
-}
-
-function isNotExist(tag, blogTags) {
-    var flag = 'true';
-
-    blogTags.forEach(function (blogTag) {
-        if (tag === blogTag) {
-            flag === 'false';
-        }
-    })
-
-    return flag;
-}
-
-function buildBlogTag(blogList) {
-    var blogTags = [];
-
-    for (var i = 0; i < blogList.length; i++) {
-        if (isNotExist(blogList[i].blogTag.tag, blogTags)) {
-            blogTags.push({id: blogList[i].blogTag.id, tag: blogList[i].blogTag.tag});
-        }
-    }
-
-    return blogTags;
 }
 
 UserBlogController.prototype.displayPage = function (req, res) {
@@ -67,7 +44,7 @@ UserBlogController.prototype.displayPage = function (req, res) {
             });
 
             setTimeout(function () {
-                res.render('user-blog', {blogList: blogList, user: user, blogTags: buildBlogTag(blogList)});
+                res.render('user-blog', {blogList: blogList, user: user, blogTags: buildBlogTags(blogList)});
             }, 300);
         });
     });
