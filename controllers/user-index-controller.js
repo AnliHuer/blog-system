@@ -10,35 +10,40 @@ function UserIndexController() {
 }
 
 UserIndexController.prototype.displayPage = function (req, res) {
-    var user = req.cookies;
     var blogList = [];
+    var blogs = [];
 
     User.findOne({
         where: {
-            userEmail: user.userEmail,
+            userEmail: req.cookies.userEmail
         }
     }).then(function (user) {
-        if (user !== null) {
-            BlogDetail.findAll({
-                where: {
-                    userId: user.dataValues.id
-                }
-            }).then(function (blogDetails) {
+        BlogDetail.findAll({
+            'order': [
+                ['clickNum', 'DESC'],
+            ],
+            'limit': 10
+        }).then(function (blogDetails) {
 
-                blogDetails.forEach(function (blogDetail) {
-                    blogDetail = formatBlogDetail(blogDetail);
+            blogDetails.forEach(function (blogDetail) {
+                blogDetail = formatBlogDetail(blogDetail);
 
-                    BlogTag.findOne({
+                BlogTag.findOne({
+                    where: {
+                        id: blogDetail.blogTagId
+                    }
+                }).then(function (blogTag) {
+
+                    Blogmessage.findAll({
                         where: {
-                            id: blogDetail.blogTagId
+                            blogDetailId: blogDetail.id
                         }
-                    }).then(function (blogTag) {
-
-                        Blogmessage.findAll({
+                    }).then(function (blogMessage) {
+                        User.findOne({
                             where: {
-                                blogDetailId: blogDetail.id
+                                id: blogDetail.userId
                             }
-                        }).then(function (blogMessage) {
+                        }).then(function (user) {
                             blogList.push({
                                 blogDetail: blogDetail,
                                 blogTag: blogTag,
@@ -47,16 +52,47 @@ UserIndexController.prototype.displayPage = function (req, res) {
                             });
                         });
                     });
-                })
-
-                setTimeout(function () {
-                    res.render('user-index', {user: user, blogList: blogList});
-                }, 300);
+                });
             });
-        } else {
-            res.render('user-index', {user: null, blogList: []});
-        }
+
+        });
+
+        BlogDetail.findAll({
+            'order': [
+                ['id', 'DESC'],
+            ],
+            'limit': 10
+        }).then(function (blogDetailList) {
+
+            blogDetailList.forEach(function (blog) {
+                blog = formatBlogDetail(blog);
+
+                BlogTag.findOne({
+                    where: {
+                        id: blog.blogTagId
+                    }
+                }).then(function (blogTag) {
+
+                    Blogmessage.findAll({
+                        where: {
+                            blogDetailId: blog.id
+                        }
+                    }).then(function (blogMessage) {
+                        blogs.push({
+                            blogDetail: blog,
+                            blogTag: blogTag,
+                            blogMessage: blogMessage
+                        });
+                    });
+                });
+            });
+        });
+
+        setTimeout(function () {
+            res.render('user-index', {user: user, blogList: blogList, blogs: blogs});
+        }, 300)
     });
+
 
 }
 
