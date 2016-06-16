@@ -49,9 +49,10 @@ UserIndexController.prototype.displayPage = function (req, res) {
                     });
                 })
 
-                res.render('user-index', {user: user, blogList: blogList});
+                setTimeout(function () {
+                    res.render('user-index', {user: user, blogList: blogList});
+                }, 300);
             });
-
         } else {
             res.render('user-index', {user: null, blogList: []});
         }

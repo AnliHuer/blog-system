@@ -9,6 +9,23 @@ var User = models.User;
 function UserBlogController() {
 }
 
+
+function getBlogTags(userId) {
+    var blogTagList = [];
+
+    BlogTag.findAll({
+        where: {
+            userId: userId
+        }
+    }).then(function (blogTags) {
+        blogTags.forEach(function (blogTag) {
+            blogTagList.push({id: blogTag.dataValues.id, tag: blogTag.dataValues.tag});
+        })
+    });
+
+    return blogTagList;
+}
+
 UserBlogController.prototype.displayPage = function (req, res) {
     var id = req.cookies.userId;
     var blogList = [];
@@ -43,8 +60,9 @@ UserBlogController.prototype.displayPage = function (req, res) {
                 });
             });
 
+            var blogTags =  getBlogTags(id);
             setTimeout(function () {
-                res.render('user-blog', {blogList: blogList, user: user, blogTags: buildBlogTags(blogList)});
+                res.render('user-blog', {blogList: blogList, user: user, blogTags:blogTags});
             }, 300);
         });
     });
