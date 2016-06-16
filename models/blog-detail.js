@@ -8,6 +8,7 @@ module.exports = function (sequelize, DataTypes) {
         blogTagId: DataTypes.INTEGER,
         userId: DataTypes.INTEGER,
         content: DataTypes.TEXT,
+        contentHtml: DataTypes.TEXT,
         blogName: DataTypes.STRING,
         blogImage: DataTypes.BLOB
     });
