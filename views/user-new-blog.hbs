@@ -10,6 +10,10 @@
     <link href="./bootstrap/dist/css/bootstrap.css" rel="stylesheet">
     <link href="./stylesheets/user-media.css" rel="stylesheet">
     <script src="./jquery/dist/jquery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.all.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <script src="./javascripts/user-new-blog.js"></script>
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
 </head>
 
@@ -18,13 +22,26 @@
     <header>
         <h1>悦 享</h1>
         <h2>记录生活 发现同好</h2>
-        <div class="logo"></div>
+        <div class="logo"><a href="user-index"></a></div>
         <nav id="topnav"><a href="user-index">首页</a><a href="user-blog">我的文章</a><a href="user-about">关于我</a><a
                 href="user-word">留言板</a></nav>
     </header>
 
     <article>
-
+        <div id="blog-shadow"></div>
+        <label>标题</label><input type="text" class="form-control" id="blog-title">
+        <label id="label-tag">类别</label>
+        <select type="text" class="form-control" id="blog-tag">
+            {{#each blogTags}}
+                <option id={{id}}>{{tag}}</option>
+            {{/each}}
+            <hr>
+        </select>
+        <button class="btn btn-sm glyphicon glyphicon-plus" aria-hidden="true" id="add-tag"></button>
+        <div id="edit-blog">
+            <script id="editor" type="text/plain"></script>
+            <button class="btn btn-default" type="button" id="save-blog">保 存</button>
+        </div>
     </article>
 
     <aside>
