@@ -4,6 +4,7 @@ var Blogmessage = models.BlogMessage;
 var BlogDetail = models.BlogDetail;
 var BlogTag = models.BlogTag;
 var User = models.User;
+var BlogMessage = models.BlogMessage;
 
 function UserBlogDetailController() {
 }
@@ -39,19 +40,47 @@ UserBlogDetailController.prototype.displayPage = function (req, res) {
                             id: blogDetail.userId
                         }
                     }).then(function (user) {
-                        res.render('user-blog-detail', {
-                            blogDetail: formatBlogDetail(blogDetail),
-                            blogTag: blogTag,
-                            blogMessages: blogMessages,
-                            user: user
+                        var messageList = [];
+
+                        blogMessages.forEach(function (blogMessage) {
+                            User.findOne({
+                                where: {
+                                    id: blogMessage.userId
+                                }
+                            }).then(function (person) {
+                                messageList.push({person: person, blogMessage: blogMessage});
+                            });
                         });
+
+                        setTimeout(function () {
+                            res.render('user-blog-detail', {
+                                blogDetail: formatBlogDetail(blogDetail),
+                                blogTag: blogTag,
+                                blogMessages: messageList,
+                                person: req.cookies
+                            });
+                        }, 100);
                     });
                 });
             });
         });
     });
+}
 
+UserBlogDetailController.prototype.addWord = function (req, res) {
+    var blogDetailId = req.body.blogDetailId;
+    var userId = req.cookies.userId;
+    var message = req.body.message;
+
+    BlogMessage.create({
+        userId: userId,
+        message: message,
+        blogDetailId: blogDetailId
+    }).then(function (data) {
+        res.send({blogMessage: data.dataValues, user: req.cookies});
+    });
 
 }
+
 
 module.exports = UserBlogDetailController;

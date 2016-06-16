@@ -6,4 +6,6 @@ var UserBlogDetailController = new UserBlogDetailController();
 
 router.get('/', UserBlogDetailController.displayPage);
 
+router.post('/add-word', UserBlogDetailController.addWord);
+
 module.exports = router;

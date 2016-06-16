@@ -7,6 +7,7 @@
     <link href="./stylesheets/user-index.css" rel="stylesheet">
     <link href="./stylesheets/user-blog-detail.css" rel="stylesheet">
     <link href="./stylesheets/user-media.css" rel="stylesheet">
+    <link href="./bootstrap/dist/css/bootstrap.css" rel="stylesheet">
     <script src="./jquery/dist/jquery.js"></script>
     <script src="./javascripts/user-blog-detail.js"></script>
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
@@ -23,7 +24,7 @@
 
     <article>
         <div id="blog-shadow"></div>
-        <div id="blog">
+        <div id="blog" data-id={{blogDetail.id}}>
             <div id="blog-title">{{blogDetail.blogName}}</div>
             <div id="blog-info"><span>作者：{{user.userName}}
                 </span>|<span>日期：{{blogDetail.createdAt}}</span>|<span>分类：{{blogTag.tag}}</span></div>
@@ -33,25 +34,33 @@
             <div id="blog-word">
                 <div class="word-area">评论：({{blogMessages.length}}个评论)</div>
                 <div class="word-line"></div>
-                <ul>
+                <div class="word-input">
+                    <textarea id="input-word" class="form-control" rows="4" cols="5" placeholder="请输入..."></textarea>
+                    <button class="btn btn-primary btn-default" type="submit" id='word-button'>留 言</button>
+                </div>
+                <div class="word-line"></div>
+                <ul id="user-message">
                     {{#each blogMessages}}
-                        <li>{{blogMessages.message}}</li>
+                        <li class="message">{{blogMessage.dataValues.message}}</li>
+                        <span class="message-userName">{{person.userName}}</span>
+                        <span class="message-createdAt">{{blogMessage.dataValues.createdAt}}</span>
+                        <div class="message-line"></div>
                     {{/each}}
                 </ul>
             </div>
     </article>
 
     <aside>
-        <div class="avatar"><a href="user-about"><span>{{user.userName}}</span></a></div>
+        <div class="avatar"><a href="user-about"><span>{{person.userName}}</span></a></div>
         <div class="topspaceinfo">
-            <h1>{{user.userName}}</h1>
-            <p>{{user.userLog}}</p>
+            <h1>{{person.userName}}</h1>
+            <p>{{person.userLog}}</p>
         </div>
         <div class="about_c">
-            <p>用户名：{{user.userName}}</p>
-            <p>ְ职&nbsp&nbsp&nbsp&nbsp业：{{user.userCareer}}</p>
-            <p>电&nbsp&nbsp&nbsp&nbsp话：{{user.userPhone}}</p>
-            <p>邮&nbsp&nbsp&nbsp&nbsp箱：{{user.userEmail}}</p>
+            <p>用户名：{{person.userName}}</p>
+            <p>ְ职&nbsp&nbsp&nbsp&nbsp业：{{person.userCareer}}</p>
+            <p>电&nbsp&nbsp&nbsp&nbsp话：{{person.userPhone}}</p>
+            <p>邮&nbsp&nbsp&nbsp&nbsp箱：{{person.userEmail}}</p>
         </div>
         <div class="copyright">
             <ul>
