@@ -10,7 +10,8 @@ module.exports = function (sequelize, DataTypes) {
         content: DataTypes.TEXT,
         contentHtml: DataTypes.TEXT,
         blogName: DataTypes.STRING,
-        blogImage: DataTypes.BLOB
+        blogImage: DataTypes.BLOB,
+        clickNum: DataTypes.INTEGER
     });
     return BlogDetail;
 };
