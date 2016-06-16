@@ -6,4 +6,8 @@ var UserNewBlogController = new UserNewBlogController();
 
 router.get('/', UserNewBlogController.displayPage);
 
+router.post('/save-blog',UserNewBlogController.saveBlog);
+
+router.get('/get-tag',UserNewBlogController.getTag);
+
 module.exports = router;
