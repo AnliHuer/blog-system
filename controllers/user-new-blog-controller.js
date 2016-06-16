@@ -71,7 +71,7 @@ UserNewBlogController.prototype.saveBlog = function (req, res) {
         }
     }).then(function (blogTag) {
         BlogDetail.create({
-                blogTagId: blogTag.dataValues.id,
+                blogTagId: blogTag[0].dataValues.id,
                 blogName: blogInfo.blogName,
                 content: blogInfo.content,
                 contentHtml: blogInfo.contentHtml,

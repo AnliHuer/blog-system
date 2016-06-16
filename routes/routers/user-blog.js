@@ -6,4 +6,6 @@ var UserBlogController = new UserBlogController();
 
 router.get('/', UserBlogController.displayPage);
 
+router.get('/search', UserBlogController.search);
+
 module.exports = router;

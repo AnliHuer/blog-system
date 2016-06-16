@@ -35,11 +35,15 @@
         <div id="create-blog">
             <a href="user-new-blog"><button class="btn btn-default" type="button" >创建博文</button></a>
         </div>
+        <div id="search-area">
+            <input type="text" class="form-control" id="blog-search" placeholder="Search">
+            <label id="total-area">共<span id="search-total">{{blogList.length}}</span>条结果</label>
+        </div>
         <div class="tag-line"></div>
         <div id="blogs">
-            <ul>
+            <ul id="blog-list">
                 {{#each blogList}}
-                    <a href="user-blog-detail?id={{blogDetail.id}}" class="blog-name">{{blogDetail.blogName}}</a>
+                    <a href="user-blog-detail?id={{blogDetail.id}}" id={{blogDetail.id}} class="blog-name">{{blogDetail.blogName}}</a>
                     <li class="blog-createdAt">{{blogDetail.createdAt}}</li>
                     <div class="blog-line"></div>
                 {{/each}}

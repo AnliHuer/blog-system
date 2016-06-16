@@ -60,12 +60,35 @@ UserBlogController.prototype.displayPage = function (req, res) {
                 });
             });
 
-            var blogTags =  getBlogTags(id);
+            var blogTags = getBlogTags(id);
             setTimeout(function () {
-                res.render('user-blog', {blogList: blogList, user: user, blogTags:blogTags});
+                res.render('user-blog', {blogList: blogList, user: user, blogTags: blogTags});
             }, 300);
         });
     });
 }
+
+UserBlogController.prototype.search = function (req, res) {
+    var userId = req.cookies.userId;
+    var blogList = [];
+
+    BlogDetail.findAll({
+        where: {
+            userId: userId
+        }
+    }).then(function (blogDetails) {
+        blogDetails.forEach(function (blogDetail) {
+            blogList.push({
+                blogDetail: formatBlogDetail(blogDetail)
+            });
+        });
+
+        setTimeout(function () {
+            res.send({blogList: blogList});
+        }, 100);
+    });
+
+}
+
 
 module.exports = UserBlogController;
