@@ -75,7 +75,8 @@ UserNewBlogController.prototype.saveBlog = function (req, res) {
                 blogName: blogInfo.blogName,
                 content: blogInfo.content,
                 contentHtml: blogInfo.contentHtml,
-                userId: user.userId
+                userId: user.userId,
+                clickNum: 0
             }
         ).then(function (data) {
             if (data.length !== 0) {

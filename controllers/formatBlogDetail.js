@@ -11,7 +11,8 @@ function formatBlogDetail(blogDetail) {
         contentHtml: blogDetail.contentHtml,
         createdAt: formatDate(blogDetail.createdAt),
         updatedAt: formatDate(blogDetail.updatedAt),
-        blogName: blogDetail.blogName
+        blogName: blogDetail.blogName,
+        clickNum: blogDetail.clickNum
     }
 }
 

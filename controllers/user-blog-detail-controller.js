@@ -16,26 +16,35 @@ UserBlogDetailController.prototype.displayPage = function (req, res) {
             id: id
         }
     }).then(function (blogDetail) {
-        BlogTag.findOne({
+        var clickNum = blogDetail.clickNum + 1;
+        BlogDetail.update({
+            clickNum: clickNum
+        }, {
             where: {
-                id: blogDetail.blogTagId
+                id: id
             }
-        }).then(function (blogTag) {
-            Blogmessage.findAll({
+        }).then(function (data) {
+            BlogTag.findOne({
                 where: {
-                    blogDetailId: id
+                    id: blogDetail.blogTagId
                 }
-            }).then(function (blogMessages) {
-                User.findOne({
+            }).then(function (blogTag) {
+                Blogmessage.findAll({
                     where: {
-                        id: blogDetail.userId
+                        blogDetailId: id
                     }
-                }).then(function (user) {
-                    res.render('user-blog-detail', {
-                        blogDetail: formatBlogDetail(blogDetail),
-                        blogTag: blogTag,
-                        blogMessages: blogMessages,
-                        user: user
+                }).then(function (blogMessages) {
+                    User.findOne({
+                        where: {
+                            id: blogDetail.userId
+                        }
+                    }).then(function (user) {
+                        res.render('user-blog-detail', {
+                            blogDetail: formatBlogDetail(blogDetail),
+                            blogTag: blogTag,
+                            blogMessages: blogMessages,
+                            user: user
+                        });
                     });
                 });
             });
