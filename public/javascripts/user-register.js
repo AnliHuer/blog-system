@@ -29,6 +29,9 @@ function userRegister() {
             $('#inputUserPhone').val('');
             $('#inputUserCareer').val('');
             $('#inputUserLog').val('');
+            setTimeout(function(){
+                $('.prompt-message').text('');
+            },2000);
         }
     });
 }
