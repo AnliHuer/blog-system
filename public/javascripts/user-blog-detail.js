@@ -11,8 +11,9 @@ function addWord() {
                 '<'+'span class="message-userName" data-id='+resp.user.userId+'>'+resp.user.userName+'</span>'+
                 '<span class="message-createdAt">'+resp.blogMessage.createdAt+'</span>'+
                 '<'+'div class="message-line"></div>';
-            
-            $('#user-message').append(string);
+
+            $('#input-word').val('');
+            $('#user-message').prepend(string);
         });
     });
 }
